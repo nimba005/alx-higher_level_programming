@@ -1,6 +1,8 @@
 #!/usr/bin/python3
+
 class Rectangle:
     number_of_instances = 0
+    print_symbol = "#"
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
@@ -17,7 +19,7 @@ class Rectangle:
         self.__width = value
     @property
     def height(self):
-        return self.height
+        return self.__height
     @height.setter
     def height(self, value):
         if not isinstance(value, int):
@@ -32,19 +34,22 @@ class Rectangle:
             return (0)
         return ((self.__width * 2) + (self.__height * 2))
     def __str__(self) -> str:
+        """present a diagram of a rectangle defined for an object"""
         if self.__width == 0 or self.__height == 0:
             return ("")
         rectangle = ""
         for column in range(self.__height):
             for row in range(self.__width):
-                rectangle += "#"
+                try:
+                    rectangle += str(self.print_symbol)
+                except Exception:
+                    rectangle += type(self).print_symbol
             if column < self.__height - 1:
                 rectangle += "\n"
         return (rectangle)
     def __repr__(self):
-        """return representation of the rectangle"""
-        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
+        """return string representation of the triangle"""
+        return "Rectangle({:d}, {:d}".format(self.__width, self.__height)
     def __del__(self):
-        """print the message for every object that is deleted"""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
