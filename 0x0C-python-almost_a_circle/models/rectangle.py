@@ -105,7 +105,7 @@ class Rectangle(Base):
             for i in range(len(args)):
                 setattr(self, list_atr[i], args[i])
         else:
-            for key, value in kwargs.item():
+            for key, value in kwargs.items():
                 setattr(self, key, value)
     def to_dictionary(self):
         """DIC REPRESENTATION"""
