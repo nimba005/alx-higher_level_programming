@@ -49,4 +49,18 @@ class Square(Rectangle):
                - 4th argument representing y attribute
            **kwargs (dict): New key/value pairs of attributes
         """
-
+        if args is not None and len(args) != 0:
+            lst_atr = ['id', 'size', 'x', 'y']
+            for i in range(len(args)):
+                if lst_atr[i] = 'size':
+                    setattr(self, 'width', args[i])
+                    setattr(self, 'height', args[i])
+                else:
+                    setattr(self, lst_atr[i],args[i])
+        else:
+            for key, value in kwargs.items():
+                if key == 'size':
+                    setattr(self, 'width', value)
+                    setattr(self, 'height', value)
+                else:
+                    setattr(self, key, value)
