@@ -18,7 +18,7 @@ class Square(Rectangle):
     def __str__(self):
         """STR DUNDER METHOD"""
         str_s = "[squaee]"
-        str_id = "({})".format(self.0x0C-python-almost_a_circleid)
+        str_id = "({})".format(self.id)
         str_xy = "{}/{} - ".format(self.x, self.y)
         str_w = "{}/{}".format(self.width, self.height)
         return str_s + str_id + str_xy + str_w
@@ -52,7 +52,7 @@ class Square(Rectangle):
         if args is not None and len(args) != 0:
             lst_atr = ['id', 'size', 'x', 'y']
             for i in range(len(args)):
-                if lst_atr[i] = 'size':
+                if lst_atr[i] == 'size':
                     setattr(self, 'width', args[i])
                     setattr(self, 'height', args[i])
                 else:
@@ -64,3 +64,13 @@ class Square(Rectangle):
                     setattr(self, 'height', value)
                 else:
                     setattr(self, key, value)
+    def to_dictionary(self):
+        """REPRESENTATION OF THE DIC"""
+        lst_atr = ['id', 'size', 'x', 'y']
+        dict_re = {}
+        for key in lst_atr:
+            if key == 'size':
+                dict_re[key] = getattr(self, 'width')
+            else:
+                dict_re[key] = getattr(self, key)
+        return dict_re
